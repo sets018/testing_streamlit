@@ -110,10 +110,10 @@ elif opcion == "3. DFS":
 elif opcion == "4. BFS":
        origen = st.selectbox("Ingrese el nodo origen para el BFS: ",
                              code_list)
-        try:
+       try:
           bfs_nodes = list(nx.bfs_tree(DG, source=origen))
           # Imprime los nodos visitados en el recorrido DFS
           for node in bfs_nodes:
               st.write(Aeropuertos.loc[node])
-        except KeyError:
+       except KeyError:
             st.write("El nodo ingresado no se encuentra en el grafo.")
