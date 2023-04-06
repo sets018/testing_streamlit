@@ -114,12 +114,11 @@ elif (menu_option == "2"):
   origen = st.text_input("Ingrese el origen del vuelo en código IATA: ")
   if origen not in DG.nodes:
     st.write("El origen no se encuentra en el grafo. Inténtelo de nuevo.")
-    continue
    
   destino = st.text_input("Ingrese el destino del vuelo en código IATA: ")
   if destino not in DG.nodes:
     st.write("El destino no se encuentra en el grafo. Inténtelo de nuevo.")
-    continue
+    
   try:
       get_shortest_path(DG, origen, destino)
   except nx.exception.NetworkXNoPath:
