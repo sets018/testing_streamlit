@@ -135,7 +135,7 @@ elif (menu_option == "2"):
       get_shortest_path(DG, origen, destino)
   except nx.exception.NetworkXNoPath:
       st.write("No existe un camino entre los nodos de origen y destino.")
-elif (opcion == "3"):
+elif (menu_option == "3"):
     origen = st.text_input('Ingrese el nodo origen para el DFS: ')
     try:
       dfs_nodes = list(nx.dfs_preorder_nodes(DG, source=origen))
@@ -144,7 +144,7 @@ elif (opcion == "3"):
         st.write(Aeropuertos.loc[node])
     except KeyError:
       st.write("El nodo ingresado no se encuentra en el grafo.")
-elif (opcion == "4"):
+elif (menu_option == "4"):
         origen=text_input('Ingrese el nodo origen para el DFS: ')
         try:
           bfs_nodes = list(nx.bfs_tree(DG, source=origen))
@@ -153,5 +153,5 @@ elif (opcion == "4"):
               st.write(Aeropuertos.loc[node])
         except KeyError:
             st.write("El nodo ingresado no se encuentra en el grafo.")
-elif (opcion == "5"):
+elif (menu_option == "5"):
   st.write("¡Hasta luego!")
