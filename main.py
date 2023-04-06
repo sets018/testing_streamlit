@@ -117,7 +117,7 @@ vuelos = pd.read_csv("https://raw.githubusercontent.com/lsolaez/Laboratorio-2/ma
 #Creando un grafo dirigido
 DG=nx.DiGraph()
 
-menu_option =  st.selectbox("Seleccione una opcion",
+menu_option =  st.radio("Seleccione una opcion",
                            ("1. Buscar aeropuerto","2. Buscar vuelo","3. DFS","4. BFS","5. Salir"))
 if (menu_option == "1. Buscar aeropuerto"):
   code = st.text_input('Ingrese el código IATA del aeropuerto a buscar: ')
