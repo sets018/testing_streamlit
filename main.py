@@ -81,12 +81,12 @@ opcion = st.radio(
     'Seleccione una opcion',
     ("1. Buscar aeropuerto", "2. Buscar vuelo", "3. DFS", "4. BFS")) 
 
-if opcion == "1":
+if opcion == "1. Buscar aeropuerto":
         code = st.selectbox('Ingrese el código IATA del aeropuerto a buscar: ',
                             code_list)
         print(Aeropuertos.loc[code])
       
-elif opcion == "2":
+elif opcion == "2. Buscar vuelo":
         origen = st.selectbox("Ingrese el origen del vuelo en código IATA: ",
                              code_list)
     
@@ -98,7 +98,7 @@ elif opcion == "2":
         if destino not in DG.nodes:
             st.write("El destino no se encuentra en el grafo. Inténtelo de nuevo.")
             
-elif opcion == "3":
+elif opcion == "3. DFS":
         origen = st.selectbox("Ingrese el nodo origen para el DFS: ",
                              code_list)
         try:
@@ -108,7 +108,7 @@ elif opcion == "3":
               st.write(Aeropuertos.loc[node])
         except KeyError:
             st.write("El nodo ingresado no se encuentra en el grafo.")
-elif opcion == "4":
+elif opcion == "4. BFS":
         origen=input('Ingrese el nodo origen para el BFS: ')
         try:
           bfs_nodes = list(nx.bfs_tree(DG, source=origen))
