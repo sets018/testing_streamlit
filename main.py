@@ -88,14 +88,14 @@ if opcion == "1. Buscar aeropuerto":
 elif opcion == "2. Buscar vuelo":
         origen = st.selectbox("Ingrese el origen del vuelo en código IATA: ",
                              code_list)
-    
-        if origen not in DG.nodes:
-            st.write("El origen no se encuentra en el grafo. Inténtelo de nuevo.")
+        if st.button('get-results'):
+            if origen not in DG.nodes:
+                st.write("El origen no se encuentra en el grafo. Inténtelo de nuevo.")
 
-        destino = st.selectbox("Ingrese el destino del vuelo en código IATA: ",
-                             code_list)
-        if destino not in DG.nodes:
-            st.write("El destino no se encuentra en el grafo. Inténtelo de nuevo.")
+            destino = st.selectbox("Ingrese el destino del vuelo en código IATA: ",
+                                 code_list)
+            if destino not in DG.nodes:
+                st.write("El destino no se encuentra en el grafo. Inténtelo de nuevo.")
             
 elif opcion == "3. DFS":
         origen = st.selectbox("Ingrese el nodo origen para el DFS: ",
