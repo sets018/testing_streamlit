@@ -55,8 +55,7 @@ def get_shortest_path(DiGraph, origin, destination):
                                  ))
         print("   Camino óptimo: " + path + " ")
         show_path(path)
-        
-@st.cache_data()        
+            
 def load_data(sw):
   #Abriendo el archivo donde tenemos el dataset de los aeropuertos
   Aeropuertos = pd.read_csv('https://raw.githubusercontent.com/lsolaez/Laboratorio-2/main/Aeropuertos.csv')
