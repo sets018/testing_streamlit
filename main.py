@@ -92,13 +92,12 @@ elif opcion == "2":
     
         if origen not in DG.nodes:
             st.write("El origen no se encuentra en el grafo. Inténtelo de nuevo.")
-            continue
 
         destino = st.selectbox("Ingrese el destino del vuelo en código IATA: ",
                              code_list)
         if destino not in DG.nodes:
             st.write("El destino no se encuentra en el grafo. Inténtelo de nuevo.")
-            continue
+            
 elif opcion == "3":
         origen = st.selectbox("Ingrese el nodo origen para el DFS: ",
                              code_list)
