@@ -34,7 +34,10 @@ def show_path(path):
 def get_all_shortest_paths(DiGraph, origin, destination):
     st.write("*** All shortest paths - Origen: " + origin + " Destino: " + destination)
     for weight in [None, "duration", "price"]:
-        st.write("* Ordenando por: " + weight)
+        if (weight != None):
+            st.write("* Ordenando por: " + weight)
+        else: 
+            st.write("* Ordenando por: None")
         paths = list(nx.all_shortest_paths(DiGraph,
                                           source=origin,
                                           target=destination,
