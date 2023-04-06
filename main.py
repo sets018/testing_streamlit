@@ -50,7 +50,10 @@ def get_shortest_path(DiGraph, origin, destination):
     st.write("*** Origen: " + origin + " Destino: " + destination)
     
     for weight in [None, "duration", "price"]:
-        st.write(" Ordenado por: " + weight)
+        if (weight != None):
+            st.write(" Ordenado por: " + weight)
+        else:
+            st.write("Ordenado por: None")
         path = list(nx.astar_path(DiGraph,
                                   (origin),
                                   (destination),
