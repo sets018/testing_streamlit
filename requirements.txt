@@ -7,3 +7,4 @@ requests
 geopy==2.2.0
 osmnx 
 networkx
+IPython
