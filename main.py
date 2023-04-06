@@ -143,4 +143,3 @@ elif (opcion == "4"):
             st.write("El nodo ingresado no se encuentra en el grafo.")
 elif (opcion == "5"):
   st.write("¡Hasta luego!")
-  break
