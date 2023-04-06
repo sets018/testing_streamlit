@@ -56,27 +56,24 @@ def get_shortest_path(DiGraph, origin, destination):
         print("   Camino óptimo: " + path + " ")
         show_path(path)
             
-def load_data(sw):
-  #Abriendo el archivo donde tenemos el dataset de los aeropuertos
-  Aeropuertos = pd.read_csv('https://raw.githubusercontent.com/lsolaez/Laboratorio-2/main/Aeropuertos.csv')
-  #Haciendo que el indice sea la columna code
-  Aeropuertos.set_index(["code"], inplace=True)
-  #Obteniendo el dataframe de vuelos
-  vuelos = pd.read_csv("https://raw.githubusercontent.com/lsolaez/Laboratorio-2/main/vuelos.csv")
-  a = Aeropuertos.reset_index()
-  code_list = a["code"]
-  code_list = code_list.to_list()
-  #Creando un grafo dirigido
-  DG=nx.DiGraph()
-  for row in vuelos.iterrows():
-      DG.add_edge(row[1]["origin"],
-                  row[1]["destination"],
-                  duration=row[1]["duration"],
-                  price=row[1]["price"])
+#Abriendo el archivo donde tenemos el dataset de los aeropuertos
+Aeropuertos = pd.read_csv('https://raw.githubusercontent.com/lsolaez/Laboratorio-2/main/Aeropuertos.csv')
+#Haciendo que el indice sea la columna code
+Aeropuertos.set_index(["code"], inplace=True)
+#Obteniendo el dataframe de vuelos
+vuelos = pd.read_csv("https://raw.githubusercontent.com/lsolaez/Laboratorio-2/main/vuelos.csv")
+a = Aeropuertos.reset_index()
+code_list = a["code"]
+code_list = code_list.to_list()
+#Creando un grafo dirigido
+DG=nx.DiGraph()
+for row in vuelos.iterrows():
+    DG.add_edge(row[1]["origin"],
+    row[1]["destination"],
+    duration=row[1]["duration"],
+    price=row[1]["price"])
       
 st.title(' Laboratorio 2 - Estructura de datos 2')
-
-load_data(1)
 
 opcion = st.radio(
     'Seleccione una opcion',
