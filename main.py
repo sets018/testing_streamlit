@@ -21,4 +21,4 @@ st.title(' Laboratorio 2 - Estructura de datos 2')
 
 origin = 'aaaaaa'
 destination = 'bbbbbbb'
-print("*** Origen: %s Destino: %s" % (origin, destination))
+st.write("origen: "+ origin + "Destino: "+ destination)
