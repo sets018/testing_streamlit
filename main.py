@@ -88,14 +88,20 @@ if opcion == "1. Buscar aeropuerto":
 elif opcion == "2. Buscar vuelo":
         origen = st.selectbox("Ingrese el origen del vuelo en código IATA: ",
                              code_list)
-        if st.button('get-results'):
-            if origen not in DG.nodes:
+        
+        if origen not in DG.nodes:
                 st.write("El origen no se encuentra en el grafo. Inténtelo de nuevo.")
 
-            destino = st.selectbox("Ingrese el destino del vuelo en código IATA: ",
+        destino = st.selectbox("Ingrese el destino del vuelo en código IATA: ",
                                  code_list)
-            if destino not in DG.nodes:
+        if destino not in DG.nodes:
                 st.write("El destino no se encuentra en el grafo. Inténtelo de nuevo.")
+                
+        if st.button('get-results'):
+            try:
+                get_shortest_path(DG, origen, destino)
+            except nx.exception.NetworkXNoPath:
+                print("No existe un camino entre los nodos de origen y destino.")
             
 elif opcion == "3. DFS":
         origen = st.selectbox("Ingrese el nodo origen para el DFS: ",
