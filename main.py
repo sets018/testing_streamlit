@@ -83,7 +83,7 @@ if opcion == "1. Buscar aeropuerto":
         code = st.selectbox('Ingrese el código IATA del aeropuerto a buscar: ',
                             code_list)
         if st.button('get-results'):
-            print(Aeropuertos.loc[code])
+            st.write(Aeropuertos.loc[code])
       
 elif opcion == "2. Buscar vuelo":
         origen = st.selectbox("Ingrese el origen del vuelo en código IATA: ",
