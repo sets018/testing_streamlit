@@ -57,7 +57,7 @@ def get_shortest_path(DiGraph, origin, destination):
         show_path(path)
         
 @st.cache_data()        
-def load_data():
+def load_data(sw):
   #Abriendo el archivo donde tenemos el dataset de los aeropuertos
   Aeropuertos = pd.read_csv('https://raw.githubusercontent.com/lsolaez/Laboratorio-2/main/Aeropuertos.csv')
   #Haciendo que el indice sea la columna code
@@ -76,6 +76,8 @@ def load_data():
                   price=row[1]["price"])
       
 st.title(' Laboratorio 2 - Estructura de datos 2')
+
+load_data(1)
 
 opcion = st.radio(
     'Seleccione una opcion',
