@@ -31,47 +31,47 @@ def show_path(path):
         
         total_price = total_price+price
         total_duration = total_duration+duration
-        print("    %s -> %s\n    - Duration: %s Price: %s $" % (
+        st.write("    %s -> %s\n    - Duration: %s Price: %s $" % (
             Aeropuertos.loc[origin]["name"],
             Aeropuertos.loc[destination]["name"],
             duration, price)
         )
     
-    print("\n     Total Duration: %s Total price: %s $ \n" % (
+    st.write("\n     Total Duration: %s Total price: %s $ \n" % (
             total_duration, total_price)
     )
 #Encuentra todos los caminos mas cortos
 def get_all_shortest_paths(DiGraph, origin, destination):
-    print("*** All shortest paths - Origen: %s Destino: %s" % (
+    st.write("*** All shortest paths - Origen: %s Destino: %s" % (
         origin, destination
     ))
     for weight in [None, "duration", "price"]:
-        print("* Ordenando por: %s" % weight)
+        st.write("* Ordenando por: %s" % weight)
         paths = list(nx.all_shortest_paths(DiGraph,
                                           source=origin,
                                           target=destination,
                                           weight=weight))
         for path in paths:
-            print("   Camino óptimo: %s" % path)
+            st.write("   Camino óptimo: %s" % path)
             show_path(path)
     
 #Encuentra todos los caminos mas cortos
 def get_all_shortest_paths(DiGraph, origin, destination):
-    print("*** All shortest paths - Origen: %s Destino: %s" % (
+    st.write("*** All shortest paths - Origen: %s Destino: %s" % (
         origin, destination
     ))
     for weight in [None, "duration", "price"]:
-        print("* Ordenando por: %s" % weight)
+        st.write("* Ordenando por: %s" % weight)
         paths = list(nx.all_shortest_paths(DiGraph,
                                           source=origin,
                                           target=destination,
                                           weight=weight))
         for path in paths:
-            print("   Camino óptimo: %s" % path)
+            st.write("   Camino óptimo: %s" % path)
             show_path(path)
 #Dibuja el camino sobre el grafo
 def plot_shortest_path(path):
-    print(path)
+    st.write(path)
     positions = nx.circular_layout(DG)
     
     nx.draw(DG, pos=positions,
@@ -94,16 +94,16 @@ def plot_shortest_path(path):
     plt.show()
         
 def get_shortest_path(DiGraph, origin, destination):
-    print("*** Origen: %s Destino: %s" % (origin, destination))
+    st.write("*** Origen: %s Destino: %s" % (origin, destination))
     
     for weight in [None, "duration", "price"]:
-        print(" Ordenado por: %s" % weight)
+        st.write(" Ordenado por: %s" % weight)
         path = list(nx.astar_path(DiGraph,
                                   (origin),
                                   (destination),
                                   weight=weight
                                  ))
-        print("   Camino óptimo: %s " % path)
+        st.write("   Camino óptimo: %s " % path)
         show_path(path)
         plot_shortest_path(path)
 
