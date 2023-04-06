@@ -117,12 +117,12 @@ vuelos = pd.read_csv("https://raw.githubusercontent.com/lsolaez/Laboratorio-2/ma
 #Creando un grafo dirigido
 DG=nx.DiGraph()
 
-menu_option =  st.radio("Seleccione una opcion",
+menu_option =  st.seelctbox("Seleccione una opcion",
                            ("1. Buscar aeropuerto","2. Buscar vuelo","3. DFS","4. BFS","5. Salir"))
 if (menu_option == "1. Buscar aeropuerto"):
   code = st.text_input('Ingrese el código IATA del aeropuerto a buscar: ')
   st.write(Aeropuertos.loc[code])
-elif (menu_option == "2"):
+elif (menu_option == "2. Buscar vuelo"):
   origen = st.text_input("Ingrese el origen del vuelo en código IATA: ")
   if origen not in DG.nodes:
     st.write("El origen no se encuentra en el grafo. Inténtelo de nuevo.")
@@ -135,7 +135,7 @@ elif (menu_option == "2"):
       get_shortest_path(DG, origen, destino)
   except nx.exception.NetworkXNoPath:
       st.write("No existe un camino entre los nodos de origen y destino.")
-elif (menu_option == "3"):
+elif (menu_option == "3. DFS"):
     origen = st.text_input('Ingrese el nodo origen para el DFS: ')
     try:
       dfs_nodes = list(nx.dfs_preorder_nodes(DG, source=origen))
@@ -144,7 +144,7 @@ elif (menu_option == "3"):
         st.write(Aeropuertos.loc[node])
     except KeyError:
       st.write("El nodo ingresado no se encuentra en el grafo.")
-elif (menu_option == "4"):
+elif (menu_option == "4. BFS"):
         origen=text_input('Ingrese el nodo origen para el DFS: ')
         try:
           bfs_nodes = list(nx.bfs_tree(DG, source=origen))
@@ -153,5 +153,5 @@ elif (menu_option == "4"):
               st.write(Aeropuertos.loc[node])
         except KeyError:
             st.write("El nodo ingresado no se encuentra en el grafo.")
-elif (menu_option == "5"):
+elif (menu_option == "5. Salir"):
   st.write("¡Hasta luego!")
