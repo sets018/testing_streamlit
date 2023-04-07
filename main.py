@@ -92,9 +92,10 @@ Coordenadas = pd.read_csv("https://raw.githubusercontent.com/lsolaez/Laboratorio
 cities_airports = pd.merge(aeropuertos_code, Coordenadas, how='inner', left_on = 'code', right_on = 'Aeropuerto')
 code_list = aeropuertos_code["code"]
 code_list = code_list.to_list()
+
 #Creando un grafo dirigido
 DG=nx.DiGraph()
-for row in vuelos.iterrows():
+for row in Vuelos.iterrows():
     DG.add_edge(row[1]["origin"],
     row[1]["destination"],
     duration=row[1]["duration"],
