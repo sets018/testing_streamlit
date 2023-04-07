@@ -71,7 +71,7 @@ def get_vuelos(cities_airports, vuelos):
         for city_code in cities:
             city_coords = (float(cities_airports[cities_airports["Aeropuerto"] == city_code]["Latitud"]),float(cities_airports[cities_airports["Aeropuerto"] == city_code]["Longitud"]))
             lines_points.append(city_coords)
-     return lines_points
+    return lines_points
             
 def create_map(cities_airports, vuelos): 
     # Creates map object
