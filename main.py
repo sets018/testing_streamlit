@@ -120,9 +120,9 @@ if opcion == "1. Buscar aeropuerto":
                             code_list)
         if st.button('get-results'):
             st.write(Aeropuertos.loc[code])
-         if st.checkbox('Mostrar ubicacion del aeropuerto seleccionado'):
-            map_2 = folium.Map(location=[5,-86], tiles="OpenStreetMap", zoom_start=3)
-            map_fig_2 = st_folium(map_2, width=725)
+            if st.checkbox('Mostrar ubicacion del aeropuerto seleccionado'):
+                map_2 = folium.Map(location=[5,-86], tiles="OpenStreetMap", zoom_start=3)
+                map_fig_2 = st_folium(map_2, width=725)
              
 elif opcion == "2. Buscar vuelo":
         origen = st.selectbox("Ingrese el origen del vuelo en código IATA: ",
