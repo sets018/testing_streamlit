@@ -109,7 +109,7 @@ if st.button('Mostrar grafo de aeropuertos y vuelos'):
     vuelos = vuelos.unique()
     
     map = create_map(cities_airports, get_vuelos(cities_airports, vuelos))
-    map_fig = st_folium(map, key="fig1", width=700, height=700)
+    map_fig = st_folium(map, width=725)
     
 opcion = st.radio(
     'Seleccione una opcion',
