@@ -2,6 +2,7 @@ import streamlit as st
 # Networkx para grafos
 import networkx as nx
 import sys
+import folium
 # Pandas
 
 from streamlit_folium import st_folium
