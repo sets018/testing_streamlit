@@ -74,7 +74,7 @@ def get_vuelos(cities_airports, vuelos):
             lines_points.append(city_coords)
     return lines_points
             
-def create_map(cities_airports, vuelos): 
+def create_map(cities_airports, lines_points): 
     # Creates map object
     map = folium.Map(location=[5,-86], tiles="OpenStreetMap", zoom_start=3)
     for city in range(0, cities_airports.shape[0]):
@@ -107,7 +107,8 @@ st.title(' Laboratorio 2 - Estructura de datos 2')
 if st.button('Mostrar grafo de aeropuertos y vuelos'):
     vuelos = Vuelos["origin"] + '-' + Vuelos["destination"]
     vuelos = vuelos.unique()
-    map = create_map(cities_airports, vuelos)
+    
+    map = create_map(cities_airports, get_vuelos(cities_airports, vuelos))
     map_fig = st_folium(map, key="fig1", width=700, height=700)
     
 opcion = st.radio(
