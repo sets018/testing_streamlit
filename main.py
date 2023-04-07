@@ -59,7 +59,7 @@ def get_shortest_path(DiGraph, origin, destination):
                                   (destination),
                                   weight=weight
                                  ))
-        print("   Camino óptimo: " + path + " ")
+        st.write("camino optimo: " + ", ".join(str(x) for x in path))
         show_path(path)
             
 #Abriendo el archivo donde tenemos el dataset de los aeropuertos
