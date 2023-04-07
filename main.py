@@ -61,13 +61,25 @@ def get_shortest_path(DiGraph, origin, destination):
                                  ))
         st.write("camino optimo: " + ", ".join(str(x) for x in path))
         show_path(path)
+def get_vuelos(cities_airports, Vuelos): 
+    for 
+    
+def create_map(cities_airports, vuelos): 
+    # Creates map object
+    map = folium.Map(location=[4,-74], tiles="OpenStreetMap", zoom_start=5)
+    for city in range(0, cities_airports.shape[0]):
+        folium.Marker(location=[cities_airports.iloc[city]['Latitud'],self. cities_airports.iloc[city]['Longitud']],popup = "-Ciudad : " + self.cities_airports.iloc[city]["localizate"] + "\n"  + "-Codigo: " + self.cities_airports.iloc[city]['codigo']).add_to(map)
+        #lines = folium.PolyLine(vuelos).add_to(map)
+    map_fig = st_folium(map, key="fig1", width=700, height=700)
             
 #Abriendo el archivo donde tenemos el dataset de los aeropuertos
 Aeropuertos = pd.read_csv('https://raw.githubusercontent.com/lsolaez/Laboratorio-2/main/Aeropuertos.csv')
 #Haciendo que el indice sea la columna code
 Aeropuertos.set_index(["code"], inplace=True)
 #Obteniendo el dataframe de vuelos
-vuelos = pd.read_csv("https://raw.githubusercontent.com/lsolaez/Laboratorio-2/main/vuelos.csv")
+Vuelos = pd.read_csv("https://raw.githubusercontent.com/lsolaez/Laboratorio-2/main/vuelos.csv")
+Coordenadas = pd.read_csv("https://raw.githubusercontent.com/sets018/testing_streamlit/main/coordenadas.csv")
+cities_airports = pd.merge(Aeropuertos, Coordenadas, how='inner', left_on = 'code', right_on = 'Aeropuerto')
 a = Aeropuertos.reset_index()
 code_list = a["code"]
 code_list = code_list.to_list()
