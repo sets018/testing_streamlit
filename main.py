@@ -104,7 +104,7 @@ for row in Vuelos.iterrows():
       
 st.title(' Laboratorio 2 - Estructura de datos 2')
 
-if st.button('Mostrar grafo de aeropuertos y vuelos'):
+if st.checkbox('Mostrar grafo de aeropuertos y vuelos'):
     vuelos = Vuelos["origin"] + '-' + Vuelos["destination"]
     vuelos = vuelos.unique()
     
