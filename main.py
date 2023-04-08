@@ -68,10 +68,11 @@ def get_shortest_path(DiGraph, origin, destination):
         plot_shortest_path(path)
  
 def plot_shortest_path(path):
-    st.write(path)
-    short_path=nx.DiGraph()
-    for i in range(len(path)-1):
-        short_path.add_edge(path[i], path[i+1])
+    st.write(type(path))
+    for city in range(0, path):
+        pass
+        #folium.Marker(location=[cities_airports.iloc[city]['Latitud'], cities_airports.iloc[city]['Longitud']],popup = "-Ciudad : " + cities_airports.iloc[city]["localizate"] + "\n"  + "-Codigo: " + cities_airports.iloc[city]['Aeropuerto']).add_to(map)
+        #lines = folium.PolyLine(lines_points).add_to(map)
     
 def get_vuelos(cities_airports, vuelos): 
     lines_points = []
