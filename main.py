@@ -74,7 +74,7 @@ def plot_shortest_path(cities_airports, path):
         airport_query = cities_airports[cities_airports["Aeropuerto"] == city]
         folium.Marker(location=[airport_query["Latitud"].iloc[0], airport_query["Longitud"].iloc[0]],popup = "-Ciudad : " + airport_query["localizate"].iloc[0]  + "\n"  + "-Codigo: " + airport_query["Aeropuerto"].iloc[0]).add_to(map_3)
         path_lines.append((airport_query["Latitud"].iloc[0], airport_query["Longitud"].iloc[0]))
-    lines = folium.PolyLine(lines_points).add_to(map_3)
+    lines = folium.PolyLine(path_lines).add_to(map_3)
     map_fig = st_folium(map_3, width=725)
 
 def get_vuelos(cities_airports, vuelos): 
