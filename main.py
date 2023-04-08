@@ -68,12 +68,10 @@ def get_shortest_path(DiGraph, origin, destination):
         plot_shortest_path(path)
  
 def plot_shortest_path(path):
-    st.write(type(path))
+    st.write(path)
     short_path=nx.DiGraph()
     for i in range(len(path)-1):
         short_path.add_edge(path[i], path[i+1])
-    st.write(type(short_path))
-    st.write(short_path)
     
 def get_vuelos(cities_airports, vuelos): 
     lines_points = []
