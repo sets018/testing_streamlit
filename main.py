@@ -50,7 +50,7 @@ def get_all_shortest_paths(DiGraph, origin, destination):
             st.write("   Camino óptimo: " + path)
             show_path(path)
             
-def get_shortest_path(DiGraph, origin, destination):
+def get_shortest_path(DiGraph, origin, destination, cities_airports):
     st.write("*** Origen: " + origin + " Destino: " + destination)
     
     for weight in [None, "duration", "price"]:
@@ -65,15 +65,17 @@ def get_shortest_path(DiGraph, origin, destination):
                                  ))
         st.write("camino optimo: " + ", ".join(str(x) for x in path))
         show_path(path)
-        plot_shortest_path(path)
+        plot_shortest_path(cities_airports,path)
  
-def plot_shortest_path(path):
-    st.write(type(path))
-    for city in range(0, path):
-        pass
-        #folium.Marker(location=[cities_airports.iloc[city]['Latitud'], cities_airports.iloc[city]['Longitud']],popup = "-Ciudad : " + cities_airports.iloc[city]["localizate"] + "\n"  + "-Codigo: " + cities_airports.iloc[city]['Aeropuerto']).add_to(map)
-        #lines = folium.PolyLine(lines_points).add_to(map)
-    
+def plot_shortest_path(cities_airports, path):
+    path_lines = []
+    map_3 = folium.Map(location=[5,-86], tiles="OpenStreetMap", zoom_start=3)
+    for city in path:
+        folium.Marker(location=[cities_airports.iloc[city]['Latitud'], cities_airports.iloc[city]['Longitud']],popup = "-Ciudad : " + cities_airports.iloc[city]["localizate"] + "\n"  + "-Codigo: " + cities_airports.iloc[city]['Aeropuerto']).add_to(map_3)
+        path.lines.append((cities_airports.iloc[city]['Latitud'], cities_airports.iloc[city]['Longitud']))
+    lines = folium.PolyLine(lines_points).add_to(map)
+    map_fig = st_folium(map_3, width=725)
+
 def get_vuelos(cities_airports, vuelos): 
     lines_points = []
     for line in vuelos:
@@ -147,7 +149,7 @@ elif opcion == "2. Buscar vuelo":
                 
         if st.button('get-results'):
             try:
-                get_shortest_path(DG, origen, destino)
+                get_shortest_path(DG, origen, destino, cities_airports)
             except nx.exception.NetworkXNoPath:
                 print("No existe un camino entre los nodos de origen y destino.")
                 
