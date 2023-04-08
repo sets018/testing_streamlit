@@ -121,7 +121,7 @@ if opcion == "1. Buscar aeropuerto":
         if st.checkbox('get-results for 1. Buscar aeropuerto'):
             st.write(Aeropuertos.loc[code])
             airport_query = cities_airports[cities_airports["Aeropuerto"] == code]
-            folium.Marker(location=[airport_query["Latitud"][0], airport_query["Longitud"][0]],popup = "-Ciudad : " + airport_query["localizate"][0] + "\n"  + "-Codigo: " + airport_query[""][0]["Aeropuerto"]).add_to(map)
+            folium.Marker(location=[airport_query["Latitud"][0], airport_query["Longitud"][0]],popup = "-Ciudad : " + airport_query["localizate"][0] + "\n"  + "-Codigo: " + airport_query["Aeropuerto"][0]).add_to(map)
             map_2 = folium.Map(location=[5,-86], tiles="OpenStreetMap", zoom_start=3)
             map_fig_2 = st_folium(map_2, width=725)
                   
