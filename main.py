@@ -65,18 +65,6 @@ def get_shortest_path(DiGraph, origin, destination, cities_airports):
                                  ))
         st.write("camino optimo: " + ", ".join(str(x) for x in path))
         show_path(path)
-        plot_shortest_path(cities_airports,path)
- 
-def plot_shortest_path(cities_airports, path):
-    path_lines = []
-    map_3 = folium.Map(location=[5,-86], tiles="OpenStreetMap", zoom_start=3)
-    for city in path:
-        airport_query = cities_airports[cities_airports["Aeropuerto"] == city]
-        folium.Marker(location=[airport_query["Latitud"].iloc[0], airport_query["Longitud"].iloc[0]],popup = "-Ciudad : " + airport_query["localizate"].iloc[0]  + "\n"  + "-Codigo: " + airport_query["Aeropuerto"].iloc[0]).add_to(map_3)
-        path_lines.append((airport_query["Latitud"].iloc[0], airport_query["Longitud"].iloc[0]))
-    lines = folium.PolyLine(path_lines).add_to(map_3)
-    if st.checkbox('Mostrar mapa'):
-        map_fig = st_folium(map_3, width=725)
 
 def get_vuelos(cities_airports, vuelos): 
     lines_points = []
