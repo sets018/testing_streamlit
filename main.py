@@ -119,7 +119,6 @@ if opcion == "1. Buscar aeropuerto":
         code = st.selectbox('Ingrese el código IATA del aeropuerto a buscar: ',
                             code_list)
         if st.checkbox('get-results for 1. Buscar aeropuerto'):
-            st.write(Aeropuertos.loc[code])
             map_2 = folium.Map(location=[5,-86], tiles="OpenStreetMap", zoom_start=3)
             airport_query = cities_airports[cities_airports["Aeropuerto"] == code]
             st.write(airport_query["Latitud"].iloc[0])
@@ -143,7 +142,7 @@ elif opcion == "2. Buscar vuelo":
                 get_shortest_path(DG, origen, destino)
             except nx.exception.NetworkXNoPath:
                 print("No existe un camino entre los nodos de origen y destino.")
-            
+            st.write(type(path))
 elif opcion == "3. DFS":
         origen = st.selectbox("Ingrese el nodo origen para el DFS: ",
                              code_list)
