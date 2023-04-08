@@ -65,6 +65,16 @@ def get_shortest_path(DiGraph, origin, destination):
                                  ))
         st.write("camino optimo: " + ", ".join(str(x) for x in path))
         show_path(path)
+        plot_shortest_path(path)
+ 
+def plot_shortest_path(path):
+    st.write(type(path))
+    short_path=nx.DiGraph()
+    for i in range(len(path)-1):
+        short_path.add_edge(path[i], path[i+1])
+    st.write(type(short_path))
+    st.write(short_path)
+    
 def get_vuelos(cities_airports, vuelos): 
     lines_points = []
     for line in vuelos:
@@ -121,7 +131,6 @@ if opcion == "1. Buscar aeropuerto":
         if st.checkbox('get-results for 1. Buscar aeropuerto'):
             map_2 = folium.Map(location=[5,-86], tiles="OpenStreetMap", zoom_start=3)
             airport_query = cities_airports[cities_airports["Aeropuerto"] == code]
-            st.write(airport_query["Latitud"].iloc[0])
             folium.Marker(location=[airport_query["Latitud"].iloc[0], airport_query["Longitud"].iloc[0]],popup = "-Ciudad : " + airport_query["localizate"].iloc[0]  + "\n"  + "-Codigo: " + airport_query["Aeropuerto"].iloc[0]).add_to(map_2)
             map_fig_2 = st_folium(map_2, width=725)
                   
@@ -142,7 +151,8 @@ elif opcion == "2. Buscar vuelo":
                 get_shortest_path(DG, origen, destino)
             except nx.exception.NetworkXNoPath:
                 print("No existe un camino entre los nodos de origen y destino.")
-            st.write(type(path))
+                
+                
 elif opcion == "3. DFS":
         origen = st.selectbox("Ingrese el nodo origen para el DFS: ",
                              code_list)
